@@ -6,11 +6,19 @@
         <title>Pig Game</title>
     </head>
     <body>
-        <div id="content"></div>
+        <div id="dice"></div>
+        <ul id="game"></ul>
         
-        <script type="text/template">
+        <script type="text/template" id="die-template"">
         	<h1>You rolled <%= roll %>!</h1>
         </script>
+        
+        <script type="text/template" id="player-template">
+        	Your score is <%= score %>!
+        	<br>
+        	<button type="button">roll again?</button>
+        </script>
+        
         
         <script src="js/lib/jquery.js" type="text/javascript"></script>
         <script src="js/lib/underscore.js" type="text/javascript"></script>
@@ -20,6 +28,8 @@
 		<script src="js/routers/router.js" type="text/javascript"></script>
         <script src="js/models/die-model.js" type="text/javascript"></script>
         <script src="js/views/die-view.js" type="text/javascript"></script>
+        <script src="js/views/player-view.js" type="text/javascript"></script>
+        <script src="js/models/player-model.js" type="text/javascript"></script>
 
 		<script src="js/app.js" type="text/javascript"></script>
 

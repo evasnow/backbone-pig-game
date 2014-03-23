@@ -2,31 +2,31 @@ app = app || {};
 
 app.views.Die = Backbone.View.extend({
 
-	el : $("#content"),
+	tagName : 'div',
 
-   render: function () {
-        var that = this;
-        //Fetching the template contents
-        $.get('templates/die-templates.html', function (data) {
-            template = _.template(data, that.model.toJSON());//Option to pass any dynamic values to template
-            that.$el.html(template);//adding the template content to the main template.
-        }, 'html');
-    }
+	render : function() {
+		this.$el.append(this.template(this.model.toJSON()));
+		return this;
+	},
+
+	template : _.template($("#die-template").html()),
+
+	rollDie : function() {
+		return this.model.rollDie();
+	}
 });
 
 app.views.Dice = Backbone.View.extend({
 
-	
-	initialize: function(dice) {
+	initialize : function(dice) {
 		this.collection = new app.collections.Dice(dice);
-		this.render();
+		this.listenTo(this.collection, "change", this.render);
 	},
 
 	render : function() {
-		var that = this;
-		$('#content').empty();
+		$('#dice').empty();
 		_.each(this.collection.models, function(die) {
-			that.renderDie(die);
+			this.renderDie(die);
 		}, this);
 	},
 
@@ -34,6 +34,10 @@ app.views.Dice = Backbone.View.extend({
 		var newdie = new app.views.Die({
 			model : die
 		});
-		newdie.render();
+		$('#dice').append(newdie.render().el);
+	},
+
+	roll : function() {
+		return this.collection.roll();
 	}
 });
