@@ -30,7 +30,7 @@ app.collections.Dice = Backbone.Collection.extend({
 		} else {
 			return _.reduce(rollArray, function(ttl, aRoll){
 				return ttl + aRoll;
-			}, 0);
+			}, 0);//return the sum of the dice
 		}
 	}
 });
