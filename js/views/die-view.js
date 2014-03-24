@@ -9,11 +9,7 @@ app.views.Die = Backbone.View.extend({
 		return this;
 	},
 
-	template : _.template($("#die-template").html()),
-
-	rollDie : function() {
-		return this.model.rollDie();
-	}
+	template : _.template($("#die-template").html())
 });
 
 app.views.Dice = Backbone.View.extend({
