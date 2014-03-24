@@ -3,6 +3,10 @@ app = app || {};
 app.views.Die = Backbone.View.extend({
 
 	tagName : 'div',
+	
+	initialize : function() {
+		
+	},
 
 	render : function() {
 		this.$el.append(this.template(this.model.toJSON()));

@@ -19,15 +19,18 @@ app.collections.Dice = Backbone.Collection.extend({
 	
 	roll : function() {
 		var self = this;
-		var rollTotal = _.reduce(self.models, function(ttl, die) {
-				return ttl + die.rollDie();
-			}, 0); //total the values of each die in the collection
-		self.set('total', rollTotal);
-		return rollTotal;
-	},
-	
-	getTotal : function() {
-		var self = this;
-		return self.get('total');
+		var rollArray = [];
+		 _.each(self.models, function(die) {
+				 rollArray.push(die.rollDie());
+			}); //collect rolls
+		if(_.any(rollArray, function(aRoll){
+				return aRoll === 1;
+		})) {
+			return 0;//turn ends, score for the turn is 0
+		} else {
+			return _.reduce(rollArray, function(ttl, aRoll){
+				return ttl + aRoll;
+			}, 0);
+		}
 	}
 });

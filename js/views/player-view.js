@@ -40,9 +40,6 @@ app.views.Game = Backbone.View.extend({
 
 	initialize : function(players) {
 		this.collection = new app.collections.Game(players);
-		/*_.each(this.collection.models, function(player) {
-			this.listenTo(player, "change:again", this.collection.playTurn(player));
-		}, this);*/
 		this.listenTo(this.collection, "change", this.render);
 
 		this.render();

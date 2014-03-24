@@ -18,6 +18,12 @@
         	<br>
         	<button type="button" class="play">roll again?</button>
         	<button type ="button" class="end">end turn</button>
+        	<ol>
+        		<% for(i = history.length - 1; i >= 0; i--) { %>
+        			<li> <%=history[i]%> </li>
+        		<% } %>
+        		
+        	</ol>
         </script>
         
         
