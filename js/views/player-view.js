@@ -54,7 +54,6 @@ app.views.Game = Backbone.View.extend({
 	},
 	
 	renderWin : function(winner) {
-		$('#game').empty();
 		if(winner.get('type') === "c") {
 			$('#game').append("computer won!");
 		} else if(winner.get('type') === "h") {
@@ -71,6 +70,7 @@ app.views.Game = Backbone.View.extend({
 	
 	endGame : function() {
 		var self = this;
+		_.each(self.collection.models, function(player){player.set('myTurn', false);}); //disable play
 		var sorted =_.sortBy(this.collection.models, function(player){return player.get('score');});
 		self.renderWin(sorted[0]);
 	}

@@ -10,7 +10,7 @@ app = {
 	templates: {},
 	
 	init: function() {
-		this.winScore = 20;
+		this.winScore = 50;
 		this.diceArray = [{}, {'myTurn' : true}];
 		this.myDice = new app.views.Dice(this.diceArray);
 		this.myPlayers = [];
