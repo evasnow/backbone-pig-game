@@ -52,17 +52,27 @@ app.views.Game = Backbone.View.extend({
 		$("#game").append(newPlayer.render().el);
 		newPlayer.setTurn();
 	},
+	
+	renderWin : function(winner) {
+		$('#game').empty();
+		if(winner.get('type') === "c") {
+			$('#game').append("computer won!");
+		} else if(winner.get('type') === "h") {
+			$('#game').append("computer won!");
+		}
+	},
 
 	initialize : function(players) {
 		this.collection = new app.collections.Game(players);
 		this.listenTo(this.collection, "change", this.render);
+		this.listenTo(this.collection, "win", this.endGame);
 		this.render();
 	},
 	
-	changeTurn : function() {
-		_.each(this.collection.models, function(player) {
-			player.setTurn(player.get('myTurn'));
-		});
+	endGame : function() {
+		var self = this;
+		var sorted =_.sortBy(this.collection.models, function(player){return player.get('score');});
+		self.renderWin(sorted[0]);
 	}
 	
 }); 

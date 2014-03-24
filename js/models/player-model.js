@@ -34,6 +34,8 @@ app.models.Player = Backbone.Model.extend({
 			var his = _.clone(self.get('turnHistory'));
 			his.push(rollTotal);
 			self.set('turnHistory', his);
+			if(self.get('score') >= app.winScore)
+				self.trigger('win', self);
 		}
 	}
 });

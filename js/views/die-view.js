@@ -2,7 +2,7 @@ app = app || {};
 
 app.views.Die = Backbone.View.extend({
 
-	tagName : 'div',
+//	tagName : 'div',
 	
 	initialize : function() {
 		
