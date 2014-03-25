@@ -27,6 +27,7 @@ body {
 
 .well {
 	display: inline-block;
+	min-width: 100%;
 }
 
 .dice {
