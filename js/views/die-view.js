@@ -2,14 +2,16 @@ app = app || {};
 
 app.views.Die = Backbone.View.extend({
 
-//	tagName : 'div',
+	//tagName: 'div',
 	
 	initialize : function() {
 		
 	},
 
 	render : function() {
-		this.$el.append(this.template(this.model.toJSON()));
+		var faceClasses = 'die-1 die-2 die-3 die-4 die-5 die-6';
+		this.$el.removeClass(faceClasses);
+		this.$el.addClass("die-"+this.model.get('roll'));
 		return this;
 	},
 
