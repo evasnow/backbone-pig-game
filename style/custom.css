@@ -1,0 +1,64 @@
+body {
+	padding-top: 20px;
+}
+
+.jumbotron {
+	text-align: center;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+
+.score {
+	float: right;
+}
+
+#dice>div{
+	background-size:50px 50px;
+	height: 50px;
+	width: 50px;
+	margin: 10px;
+	float: left;
+}
+
+.well {
+	display: inline-block;
+}
+
+.dice {
+	height: 70px;
+	width: 120px;
+	display: inline-block;
+	margin: auto;
+}
+
+.die-1 {
+	background-image: url('img/die1.png');
+}
+
+.die-2 {
+	background-image: url('img/die2.png');
+}
+
+.die-3 {
+	background-image: url('img/die3.png');
+}
+
+.die-4 {
+	background-image: url('img/die4.png');
+}
+
+.die-5 {
+	background-image: url('img/die5.png');
+}
+
+.die-6 {
+	background-image: url('img/die6.png');
+	background-size:50px 50px;
+	height: 50px;
+	width: 50px;
+}
