@@ -2,8 +2,6 @@ app = app || {};
 
 app.views.Player = Backbone.View.extend({
 
-	tagName : 'li',
-
 	template : _.template($("#player-template").html()),
 
 	render : function() {
@@ -39,7 +37,7 @@ app.views.Game = Backbone.View.extend({
 	el : $("#game"),
 
 	render : function() {
-		$('#game').empty();
+		$('#player-list').empty();
 		_.each(this.collection.models, function(player) {
 			this.renderPlayer(player);
 		}, this);
@@ -49,15 +47,15 @@ app.views.Game = Backbone.View.extend({
 		var newPlayer = new app.views.Player({
 			model : player
 		});
-		$("#game").append(newPlayer.render().el);
+		$("#player-list").append(newPlayer.render().el);
 		newPlayer.setTurn();
 	},
 	
 	renderWin : function(winner) {
 		if(winner.get('type') === "c") {
-			$('#game').append("computer won!");
+			$('#winner').append("computer!");
 		} else if(winner.get('type') === "h") {
-			$('#game').append("computer won!");
+			$('#winner').append("human!");
 		}
 	},
 
@@ -72,7 +70,7 @@ app.views.Game = Backbone.View.extend({
 		var self = this;
 		_.each(self.collection.models, function(player){player.set('myTurn', false);}); //disable play
 		var sorted =_.sortBy(this.collection.models, function(player){return player.get('score');});
-		self.renderWin(sorted[0]);
+		self.renderWin(sorted.pop());
 	}
 	
 }); 

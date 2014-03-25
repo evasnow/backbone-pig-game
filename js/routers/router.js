@@ -11,13 +11,11 @@ app = {
 	
 	init: function() {
 		this.winScore = 50;
-		this.diceArray = [{}, {'myTurn' : true}];
+		this.diceArray = [{}, {}];
 		this.myDice = new app.views.Dice(this.diceArray);
 		this.myPlayers = [];
-		this.myPlayers.push(new app.models.Player(true, 'c'));
-		this.myPlayers.push(new app.models.Player(false, 'h'))
+		this.myPlayers.push(new app.models.Player(true, 'h'))
+		this.myPlayers.push(new app.models.Player(false, 'c'));
 		this.myGame = new app.views.Game(this.myPlayers);
-		//appRouter = new app.routers.Router();
-		//Backbone.history.start();
 	}
 };
